@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
-import {WeatherDisplay} from '../WeatherDisplay/WeatherDisplay';
-import logo from '../../logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.css";
+import {Col, Container, Row} from "react-bootstrap";
+import {WeatherDisplay} from "../WeatherDisplay/WeatherDisplay";
+import {NavbarB} from "../Navbar/NavbarB";
+import {CitySelector} from "../CitySelector/CitySelector"
 
 const PLACES = [
-    {name: "Palo Alto", zip: "94303"},
+    {name: "NSK", zip: "630000"},
     {name: "San Jose", zip: "94088"},
     {name: "Santa Cruz", zip: "95062"},
     {name: "Honolulu", zip: "96803"}
@@ -18,21 +21,27 @@ class App extends Component {
         };
     }
 
+    changeZipAction = (placeId)=>{
+        this.setState({activePlace: placeId});
+    }
+
     render() {
         const placeId = this.state.activePlace;
         return (
             <div className="App">
-                {PLACES.map((value, index) => (
-                    <button
-                        key={index}
-                        onClick={() => this.setState({activePlace:index})}>
-                        {value.name}
-                    </button>
-                ))}
-                <WeatherDisplay
-                    zip={PLACES[placeId].zip}
-                    key={placeId}
-                    />
+                <NavbarB/>
+                <div className="mt-4">
+                    <Container>
+                        <Row>
+                            <Col md={4} sm={4}>
+                                <CitySelector changeZip={this.changeZipAction} places={PLACES} placeId={placeId}/>
+                            </Col>
+                            <Col md={8} sm={8}>
+                                <WeatherDisplay key={placeId} zip={PLACES[placeId].zip}/>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
             </div>
         );
     }
