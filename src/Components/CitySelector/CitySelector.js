@@ -3,10 +3,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import {Nav} from "react-bootstrap";
 
 export class CitySelector extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const placeId = this.props.placeId;
         return (

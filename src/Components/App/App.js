@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import "bootstrap/dist/css/bootstrap.css";
+import "bootswatch/dist/lux/bootstrap.css";
 import {Col, Container, Row} from "react-bootstrap";
 import {WeatherDisplay} from "../WeatherDisplay/WeatherDisplay";
 import {NavbarB} from "../Navbar/NavbarB";
@@ -8,8 +8,8 @@ import {CitySelector} from "../CitySelector/CitySelector"
 
 const PLACES = [
     {name: "NSK", zip: "630000"},
-    {name: "San Jose", zip: "94088"},
-    {name: "Santa Cruz", zip: "95062"},
+    {name: "Железногорск-Илимский", zip: "665653"},
+    {name: "MSK", zip: "101000"},
     {name: "Honolulu", zip: "96803"}
 ];
 
@@ -23,7 +23,7 @@ class App extends Component {
 
     changeZipAction = (placeId)=>{
         this.setState({activePlace: placeId});
-    }
+    };
 
     render() {
         const placeId = this.state.activePlace;
